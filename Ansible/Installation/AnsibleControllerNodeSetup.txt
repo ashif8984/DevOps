@@ -1,0 +1,37 @@
+
+
+Step 1: ssh-keygen from the Controller Machine
+Step 2: Copy the public key
+Step 3: In the Node: vi .ssh/authorized_keys, paste the ssh key
+Step 4: In the Controller: vi /etc/ansible/hosts and add Group Server
+		[test]
+		<ip_of_the_node>
+step 5: Test the ping using:
+		ansible ping -m all
+		(or)
+		ansible ping -m test
+
+
+
+# Sample Ad-Hoc Commands:
+
+To Copy Files to Node(s) machine:
+ansible -m copy all -a "src=/tmp/ashif.txt dest=/tmp/ashif.txt"
+
+# To Check the uptime
+ansible test -m command -a uptime
+
+# ansible ad hoc command to get physical memory allocated to the host
+ansible test -m shell -a "cat /proc/meminfo|head -2"
+
+
+# Create a unix user group with ansible ad hoc command
+Create a file with 755 permission using ansible ad hoc commands
+
+
+# Create a file with 755 permission using ansible ad hoc commands
+ansible test -m file -a "path=/tmp/testfile state=touch mode=0755"
+
+For more:
+
+https://www.middlewareinventory.com/blog/ansible-ad-hoc-command-examples-cheat-sheet/
