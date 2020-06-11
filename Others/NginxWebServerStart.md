@@ -1,8 +1,8 @@
-### Restart Nginx Web-Server for Python Django Application
+## Restart Nginx Web-Server for Python Django Application
 If the application is deployed on AWS-Ubuntu Instance, they tend to change Public-IP on reboot of the instance/Instance Stop.
 For more ref: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
 
-## Getting started
+### Getting started
 
 > To overcome this situation and cope up with it there are few steps need to take
 
