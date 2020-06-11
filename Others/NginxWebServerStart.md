@@ -1,26 +1,62 @@
+### Restart Nginx Web-Server for Python Django Application
+If the application is deployed on AWS-Ubuntu Instance, they tend to change Public-IP on reboot of the instance/Instance Stop.
+For more ref: https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
 
+## Getting started
 
-# To Restart the Nginx Web-Server hosting out Python Application
+> To overcome this situation and cope up with it there are few steps need to take
 
-# If the application is deployed on AWS-Ubuntu Instance, they tend to change Public-IP on reboot of the instance/Instance Stop.
+##### Step 1: Start the Ubuntu-Server instance hosted in AWS that contains your code
 
-# To overcome this situation and cope up with it there are few steps need to take
+##### Step 2: Update the public IP of the Ubuntu instance in the below location
+>SSH to the instance and navigate to below location
+```
+$ ssh ubuntu@<ip>
+```
+>Login via the User created for Deployment
+```
+$ su djangodeploy   # username
+```
+> Now change the IP in the Nginx Configuration File
+```
+$ cd 
+$ cd /etc/nginx/sites-available
+$ sudo nano portfolio  # portfolio is the project name
+    server_name <ip_aws_instanace>;
+Save and close the file
+```
+> Change the IP in the setting.py file under ALLOWED_HOSTS
+```
+$ cd ~ home
+$ cd portfolio-project/portfolio  # path to the project directory
+$ sudo nano settings.py 
+    ALLOWED_HOSTS = ['<ip_aws_instanace>']
+Save and close the file
+```
+##### Step 3: Reboot to the server (from terminal) to apply the changes
+``` 
+# reboot the server
+$ sudo reboot now
+```
+> Wait for the server to be Up and again login via the Deploy user
+```
+$ su djangodeploy   # username
+```
 
-1. Change the new IP in the below location
+##### Step 4: Restart the NginX Server
+```
+$ sudo nginx -t 
+$ sudo systemctl restart nginx
+```
 
-    $ cd/etc/nginx/sites-available/portfolio #portfolio is the applcaiotn name
-    $ sudo nano portfolio
-      # change the IP:
-        server_name <ip_aws_instanace>;
-    $ cd ~ home
-    $ cd portfolio-project/portfolio/local_settings.py
-       # chnage the IP
+##### Step 5: Goto the URL in the browser and type the IP address:
 
-2. Reboot the server :
-    $ sudo reboot now
+```
+http://<ip_aws_instanace>
+```
+### Contact me :
 
-3. Restart the NginX Server
-    $sudo nginx -t && sudo systemctl restart nginx
-
-4. Goto the URL in the browser and type the IP address:
-    http://<IP>
+Contact | Link
+------------- | -------------
+LinkedIn:  |https://www.linkedin.com/in/ashif-eqbal-4ba85278/
+Email:  | ashif8984@gmail.com
