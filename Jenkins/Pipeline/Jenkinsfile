@@ -1,0 +1,53 @@
+// This is pipeline script Jenkinsfile to Build & Deploy WAR file to 2 tomcat instance
+
+pipeline {
+    agent any
+    environment {
+        PATH = "/opt/maven/apache-maven-3.6.3/bin:$PATH"
+    }
+
+    stages {
+        stage("Checkout"){
+            steps{
+
+               echo "-----------Git Checkout------------"
+               git credentialsId: 'git_credentials', url: 'https://github.com/ashif8984/hello-world.git'
+            }
+        }
+
+        stage("Build"){
+            steps{
+              echo "-----------Building------------"
+              sh "mvn clean install"
+
+            }
+        }
+
+        stage('Test') {
+            steps {
+              echo "-----------Testing------------"
+              echo '#pass'
+            }
+        }
+
+        stage('Deploy') {
+
+            steps {
+                sshagent(['deploy_user']) {
+                 
+                echo "----------------Backup the existng war-------------------"
+                
+                    sh "../../jenkins_scripts/remote_bkp.sh"
+                
+                echo "----------------Deploying--------------------------------"
+                
+                    sh "../../jenkins_scripts/remote_deploy.sh"
+                        
+                 
+            }
+
+            }
+        }
+    }
+
+}
