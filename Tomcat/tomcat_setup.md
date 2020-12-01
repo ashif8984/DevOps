@@ -24,6 +24,7 @@ Difference between web and application server ?
 ### Installation of Tomcat :
 
 #### Step 1 : Install Java and Java Compiler
+
     ```
     # Install
     $ yum -y install java-1.8.0-openjdk
@@ -70,7 +71,7 @@ Difference between web and application server ?
 
     > Modify the context files
 
-    ```shell
+    ```
     [root@ip-172-31-14-94 conf]# find / -name context.xml
     /opt/tomcat/webapps/host-manager/META-INF/context.xml
     /opt/tomcat/webapps/manager/META-INF/context.xml
@@ -88,7 +89,7 @@ Difference between web and application server ?
 
 #### Step 4 : Deploy sample.war file
 
-    ```shell
+    ```
     $ bin/shutdown.sh
     $ cd webapps/
     $ wget https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
