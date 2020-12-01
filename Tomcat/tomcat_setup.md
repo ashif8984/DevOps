@@ -24,7 +24,7 @@ Difference between web and application server ?
 ### Installation of Tomcat :
 
 #### Step 1 : Install Java and Java Compiler
-    ```shell
+    ```
     # Install
     $ yum -y install java-1.8.0-openjdk
 	$ yum -y install java-1.7.0-openjdk-devel
@@ -36,7 +36,7 @@ Difference between web and application server ?
 
 #### Step 2 : Download and Extract Tomcat tar file (URL : https://tomcat.apache.org/download-80.cgi)
 
-    ```shell
+    ```
     $ wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.60/bin/apache-tomcat-8.5.60.tar.gz
     $ tar -xvf apache-tomcat-8.5.60.tar.gz -C /opt/
     $ cd /opt
