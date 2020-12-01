@@ -72,12 +72,12 @@ Difference between web and application server ?
     > Modify the context files
 
     ```
-    [root@ip-172-31-14-94 conf]# find / -name context.xml
+    $ find / -name context.xml
     /opt/tomcat/webapps/host-manager/META-INF/context.xml
     /opt/tomcat/webapps/manager/META-INF/context.xml
 
     # Comment the below section in both the above files
-    [root@ip-172-31-14-94 conf]# vi /opt/tomcat/webapps/host-manager/META-INF/context.xml
+    $ vi /opt/tomcat/webapps/host-manager/META-INF/context.xml
 
         <!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
          allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
